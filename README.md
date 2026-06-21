@@ -20,6 +20,13 @@ A personal portfolio website showcasing skills, projects, and contact informatio
 
 https://manyanath.github.io/OIBSIP/Task2-Portfolio/
 
+### Task 3 - Temperature Converter
+
+An interactive temperature converter built using HTML, CSS and JavaScript.
+
+### Live Demo
+https://manyanath.github.io/OIBSIP/Task3-TemperatureConverter/
+
 ## Technologies Used
 
 * HTML5
@@ -27,4 +34,4 @@ https://manyanath.github.io/OIBSIP/Task2-Portfolio/
 
 ## Author
 
-Manya Nath
+Manya
