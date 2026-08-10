@@ -1,0 +1,25 @@
+import java.util.HashMap;
+
+public class Bank {
+   HashMap<String, Account> accounts = new HashMap();
+
+   public Bank() {
+      this.accounts.put("user1", new Account("user1", "1234", (double)10000.0F));
+      this.accounts.put("user2", new Account("user2", "4321", (double)5000.0F));
+   }
+
+   public Account login(String id, String pin) {
+      if (this.accounts.containsKey(id)) {
+         Account acc = (Account)this.accounts.get(id);
+         if (acc.getPin().equals(pin)) {
+            return acc;
+         }
+      }
+
+      return null;
+   }
+
+   public Account getAccount(String id) {
+      return (Account)this.accounts.get(id);
+   }
+}
