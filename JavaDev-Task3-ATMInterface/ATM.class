@@ -1,0 +1,98 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ATM {
+   private Bank bank;
+   private ArrayList<Transaction> history = new ArrayList();
+
+   public ATM(Bank bank) {
+      this.bank = bank;
+   }
+
+   public void start() {
+      Scanner sc = new Scanner(System.in);
+      int attempts = 3;
+      Account current = null;
+
+      while(attempts > 0) {
+         System.out.print("User ID: ");
+         String id = sc.nextLine();
+         System.out.print("PIN: ");
+         String pin = sc.nextLine();
+         current = this.bank.login(id, pin);
+         if (current != null) {
+            break;
+         }
+
+         --attempts;
+         System.out.println("Wrong Credentials!");
+      }
+
+      if (current == null) {
+         System.out.println("Access Denied!");
+      } else {
+         while(true) {
+            System.out.println("\n===== ATM MENU =====");
+            System.out.println("1. Transaction History");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Deposit");
+            System.out.println("4. Transfer");
+            System.out.println("5. Quit");
+            int choice = sc.nextInt();
+            switch (choice) {
+               case 1:
+                  if (this.history.isEmpty()) {
+                     System.out.println("No Transactions");
+                  } else {
+                     for(Transaction t : this.history) {
+                        System.out.println(t);
+                     }
+                  }
+                  break;
+               case 2:
+                  System.out.print("Amount: ");
+                  double w = sc.nextDouble();
+                  if (current.withdraw(w)) {
+                     this.history.add(new Transaction("Withdraw", w));
+                     System.out.println("Success");
+                     System.out.println("Balance = " + current.getBalance());
+                  } else {
+                     System.out.println("Insufficient Funds");
+                  }
+                  break;
+               case 3:
+                  System.out.print("Amount: ");
+                  double d = sc.nextDouble();
+                  current.deposit(d);
+                  this.history.add(new Transaction("Deposit", d));
+                  System.out.println("Balance = " + current.getBalance());
+                  break;
+               case 4:
+                  sc.nextLine();
+                  System.out.print("Receiver ID: ");
+                  String id = sc.nextLine();
+                  Account receiver = this.bank.getAccount(id);
+                  if (receiver == null) {
+                     System.out.println("Account Not Found");
+                  } else {
+                     System.out.print("Amount: ");
+                     double amt = sc.nextDouble();
+                     if (current.withdraw(amt)) {
+                        receiver.deposit(amt);
+                        this.history.add(new Transaction("Transfer", amt));
+                        System.out.println("Transfer Successful");
+                     } else {
+                        System.out.println("Insufficient Funds");
+                     }
+                  }
+                  break;
+               case 5:
+                  System.out.println("Thank You!");
+                  return;
+               default:
+                  System.out.println("Invalid Choice");
+            }
+         }
+      }
+   }
+}
