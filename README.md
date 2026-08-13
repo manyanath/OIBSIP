@@ -4,7 +4,7 @@ Oasis Infobyte Web Development Internship Projects
 
 ## Level 1 Tasks
 
-### Task 1 - Landing Page
+### Task 1 - Online Reservation System
 
 A responsive landing page built using HTML and CSS.
 
@@ -12,7 +12,7 @@ A responsive landing page built using HTML and CSS.
 
 https://manyanath.github.io/OIBSIP/WebDev-L1-LandingPage/
 
-### Task 2 - Portfolio
+### Task 2 - ATM Interface
 
 A personal portfolio website showcasing skills, projects, and contact information.
 
@@ -20,7 +20,7 @@ A personal portfolio website showcasing skills, projects, and contact informatio
 
 https://manyanath.github.io/OIBSIP/WebDev-L1-Portfolio/
 
-### Task 3 - Temperature Converter
+### Task 3 - Online Exam System
 
 An interactive temperature converter built using HTML, CSS and JavaScript.
 
